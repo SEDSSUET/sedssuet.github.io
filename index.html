@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - BS Software Engineering, SSUET</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <h1>Software Engineering Department</h1>
+                <p>Sir Syed University of Engineering and Technology, Karachi</p>
+            </header>
+
+            <!-- Coming Soon Message -->
+            <section class="coming-soon">
+                <h2>We're Coming Soon!</h2>
+                <p>Get ready for an exciting update to our Software Engineering program. Stay tuned!</p>
+            </section>
+
+            <!-- Countdown Timer -->
+            <section class="countdown">
+                <div class="timer-box">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+                <div class="timer-box">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes">00</span>
+                    <p>Minutes</p>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds">00</span>
+                    <p>Seconds</p>
+                </div>
+            </section>
+
+            <!-- Contact Info -->
+            <footer>
+                <p>Contact us: <a href="mailto:info@ssuet.edu.pk">info@ssuet.edu.pk</a> | +92-21-34988000</p>
+                <p>Main University Road, Karachi-75300, Pakistan</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Countdown JavaScript -->
+    <script>
+        // Set the launch date (e.g., March 15, 2025)
+        const launchDate = new Date("March 20, 2025 00:00:00").getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector(".coming-soon h2").innerText = "We're Live!";
+                document.querySelector(".countdown").style.display = "none";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
